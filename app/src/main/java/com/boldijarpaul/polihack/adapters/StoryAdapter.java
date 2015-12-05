@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -56,12 +57,22 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_NORMAL) {
 
-            Story story = mStories.get(position - 1);
+            final Story story = mStories.get(position - 1);
             StoryViewHolder storyViewHolder = (StoryViewHolder) holder;
             storyViewHolder.title.setText(story.name);
             GradientDrawable shapeDrawable = (GradientDrawable) storyViewHolder.circle.getBackground();
             shapeDrawable.setColor(story.getColor());
             storyViewHolder.secondLine.setText(mContext.getString(R.string.msg_quest_count) + "15");
+            storyViewHolder.circle.setImageResource(((int) (Math.random() * 100) % 2) == 0 ? R.drawable.ic_close_white_24dp :
+                    R.drawable.ic_check_white_24dp);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.onItemClick(story);
+                    }
+                }
+            });
 
         } else {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +94,8 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public interface StoryAdapterListener {
         void onHeaderClick();
+
+        void onItemClick(Story story);
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -94,11 +107,13 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public static class StoryViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.item_story_circle)
-        View circle;
+        ImageView circle;
         @Bind(R.id.item_story_second_line)
         TextView secondLine;
         @Bind(R.id.item_story_title)
         TextView title;
+        @Bind(R.id.item_story_root)
+        View root;
 
         public StoryViewHolder(View itemView) {
             super(itemView);

@@ -1,10 +1,13 @@
 package com.boldijarpaul.polihack.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 import com.boldijarpaul.polihack.R;
@@ -54,6 +57,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -100,6 +110,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mRecycler.setVisibility(View.INVISIBLE);
         mFab.setVisibility(View.VISIBLE);
 
+    }
+
+    @Override
+    public void onItemClick(Story story) {
+        Intent intent = new Intent(this, QuestsActivity.class);
+        intent.putExtra(QuestsActivity.KEY_STORY, story);
+        startActivity(intent);
     }
 
     @OnClick(R.id.main_fab)
