@@ -5,5 +5,6 @@
     <color name="colorAccent">#59c6f1</color>
     <color name="background">#eeeeee</color>
     <color name="divider">#5f7284</color>
+    <color name="colorPrimaryLight">#f5d150</color>
 
 </resources>

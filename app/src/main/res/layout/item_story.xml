@@ -24,6 +24,13 @@
             android:padding="5dp"
             android:src="@drawable/ic_check_white_24dp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:alpha="0.05"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"
+            android:background="@color/divider"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,8 +54,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                tools:text="Total quests: 12" />
+                tools:text="Total storys: 12" />
 
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp">
+
+                <ImageView
+                    android:id="@+id/item_story_rate1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bell" />
+
+                <ImageView
+                    android:id="@+id/item_story_rate2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bell" />
+
+                <ImageView
+                    android:id="@+id/item_story_rate3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bell" />
+
+                <ImageView
+                    android:id="@+id/item_story_rate4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bell" />
+
+                <ImageView
+                    android:id="@+id/item_story_rate5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bell" />
+            </LinearLayout>
         </LinearLayout>
     </FrameLayout>
 

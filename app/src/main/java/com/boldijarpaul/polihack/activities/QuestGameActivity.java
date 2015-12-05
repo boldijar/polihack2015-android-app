@@ -2,14 +2,14 @@ package com.boldijarpaul.polihack.activities;
 
 import android.content.Intent;
 import android.graphics.PointF;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.mvp.model.Quest;
@@ -102,6 +102,11 @@ public class QuestGameActivity extends AppCompatActivity implements OnMapReadyCa
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
+        }
+        if (item.getItemId() == R.id.menu_quest_game_navigation) {
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?daddr=" + mQuest.latitude + "," + mQuest.longitude));
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
