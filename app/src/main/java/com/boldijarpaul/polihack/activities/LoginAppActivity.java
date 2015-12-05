@@ -8,14 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.boldijarpaul.polihack.MainActivity;
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.dagger.DaggerApp;
 import com.boldijarpaul.polihack.mvp.model.User;
 import com.boldijarpaul.polihack.mvp.presenter.LoginPresenter;
 import com.boldijarpaul.polihack.mvp.view.LoginView;
 import com.boldijarpaul.polihack.prefs.CurrentUserPreference;
-import com.squareup.picasso.Picasso;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;

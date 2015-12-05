@@ -1,7 +1,7 @@
 package com.boldijarpaul.polihack.dagger;
 
 
-import com.boldijarpaul.polihack.MainActivity;
+import com.boldijarpaul.polihack.activities.MainActivity;
 import com.boldijarpaul.polihack.activities.LoginAppActivity;
 import com.boldijarpaul.polihack.mvp.presenter.LoginPresenter;
 

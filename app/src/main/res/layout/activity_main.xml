@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.boldijarpaul.polihack.MainActivity">
+    android:animateLayoutChanges="true"
+    tools:context=".activities.MainActivity">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,4 +19,16 @@
         android:id="@+id/main_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_view_list_white_24dp"
+        android:visibility="invisible"
+        app:elevation="4dp"
+        tools:visibility="visible" />
 </FrameLayout>

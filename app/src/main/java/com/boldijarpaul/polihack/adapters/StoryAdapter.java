@@ -1,4 +1,4 @@
-package com.boldijarpaul.polihack;
+package com.boldijarpaul.polihack.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.mvp.model.Story;
 
 import java.util.List;
@@ -23,7 +24,11 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static final int TYPE_HEADER = 1;
     private List<Story> mStories;
     private Context mContext;
+    private StoryAdapterListener mListener;
 
+    public void setListener(StoryAdapterListener mListener) {
+        this.mListener = mListener;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -58,6 +63,15 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             shapeDrawable.setColor(story.getColor());
             storyViewHolder.secondLine.setText(mContext.getString(R.string.msg_quest_count) + "15");
 
+        } else {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.onHeaderClick();
+                    }
+                }
+            });
         }
     }
 
@@ -65,6 +79,10 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {
         return mStories.size() + 1;
+    }
+
+    public interface StoryAdapterListener {
+        void onHeaderClick();
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
