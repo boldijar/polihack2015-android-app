@@ -3,6 +3,7 @@
     package="com.boldijarpaul.polihack">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".dagger.DaggerApp"
@@ -17,7 +18,7 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activities.LoginAppActivity"></activity>
+        <activity android:name=".activities.LoginAppActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -36,6 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.QuestGameActivity" />
+        <activity android:name=".activities.QuizActivity"></activity>
     </application>
 
 </manifest>

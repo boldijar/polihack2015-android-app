@@ -5,12 +5,16 @@ import java.io.Serializable;
 
 public class Quest extends BaseObject implements Serializable {
 
-	public String name;
-	public long latitude;
-	public long longitude;
-	public Integer previousQuestId;
-	public int storyId;
+    public String name;
+    public double latitude;
+    public double longitude;
+    public Integer previousQuestId;
+    public int storyId;
+    public int rating;
 
-	public String hash;
+    public int color;
+    public int points;
+
+    public String hash;
 
 }

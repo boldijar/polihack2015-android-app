@@ -32,15 +32,15 @@
             tools:ignore="MissingPrefix">
 
             <TextView
-                android:id="@+id/item_story_title"
+                android:id="@+id/item_quest_title"
                 fontPath="fonts/Lato-Bold.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                tools:text="History game" />
+                tools:text="Hiquest game" />
 
             <TextView
-                android:id="@+id/item_story_second_line"
+                android:id="@+id/item_quest_second_line"
                 fontPath="fonts/Lato-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

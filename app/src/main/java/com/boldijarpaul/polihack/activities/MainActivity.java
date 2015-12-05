@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ArrayList<Story> stories;
 
 
-    private Story createStory(String name, String color, double lat, double lng) {
+    private Story createStory(String name, int color, double lat, double lng) {
         Story story = new Story();
         story.name = name;
         story.color = color;
@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         ButterKnife.bind(this);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.main_map_fragment);
         stories = new ArrayList<Story>();
-        stories.add(createStory("History quest", "ff0fab", 45.6667, 24.6167));
-        stories.add(createStory("Narnia hunt", "fa0fa5", 45.637, 25.4167));
-        stories.add(createStory("Colorado 23", "278210", 45.6167, 25.5147));
-        stories.add(createStory("Spiderin", "ab2bac", 45.6637, 25.8161));
-        stories.add(createStory("Valoroa hor", "bacbac", 45.5617, 25.5967));
-        stories.add(createStory("Music quest", "ca127c", 45.8657, 25.6667));
+        stories.add(createStory("History quest", 0xff0fab, 45.6667, 24.6167));
+        stories.add(createStory("Narnia hunt", 0xfa0fa5 , 45.637, 25.4167));
+        stories.add(createStory("Colorado 23", 0x278210, 45.6167, 25.5147));
+        stories.add(createStory("Spiderin", 0xab2bac, 45.6637, 25.8161));
+        stories.add(createStory("Valoroa hor", 0xbacbac, 45.5617, 25.5967));
+        stories.add(createStory("Music quest", 0xca127c, 45.8657, 25.6667));
 
         StoryAdapter adapter = new StoryAdapter(stories, this);
         adapter.setListener(this);
