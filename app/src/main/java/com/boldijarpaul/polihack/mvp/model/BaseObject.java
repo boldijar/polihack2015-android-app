@@ -1,4 +1,4 @@
-package com.boldijarpaul.polihack.entities;
+package com.boldijarpaul.polihack.mvp.model;
 
 public class BaseObject {
 

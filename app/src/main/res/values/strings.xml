@@ -3,4 +3,6 @@
     <string name="msg_login_fb">Login with facebook</string>
     <string name="msg_unknown_error">Unknown error</string>
     <string name="app_id">459579727578227</string>
+    <string name="maps_key">AIzaSyART7jeVPI-MngAVVpCony-d8rEPqTkbtM</string>
+    <string name="msg_quest_count">"Quest count: "</string>
 </resources>

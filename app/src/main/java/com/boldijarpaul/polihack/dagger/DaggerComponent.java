@@ -1,12 +1,14 @@
 package com.boldijarpaul.polihack.dagger;
 
 
+import com.boldijarpaul.polihack.prefs.PrefsModule;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {DaggerAppModule.class,DebugDataModule.class})
+@Component(modules = {DaggerAppModule.class, DebugDataModule.class, PrefsModule.class})
 public interface DaggerComponent extends DaggerGraph {
 
     final class Initializer {

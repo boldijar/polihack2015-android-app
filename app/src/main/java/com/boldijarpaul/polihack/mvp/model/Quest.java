@@ -1,7 +1,9 @@
-package com.boldijarpaul.polihack.entities;
+package com.boldijarpaul.polihack.mvp.model;
 
 
-public class Quest extends BaseObject {
+import java.io.Serializable;
+
+public class Quest extends BaseObject implements Serializable {
 
 	public String name;
 	public long latitude;

@@ -1,9 +1,10 @@
-package com.boldijarpaul.polihack.entities;
+package com.boldijarpaul.polihack.mvp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quiz extends BaseObject {
+public class Quiz extends BaseObject implements Serializable {
 
 	public String hash;
 	public String question;

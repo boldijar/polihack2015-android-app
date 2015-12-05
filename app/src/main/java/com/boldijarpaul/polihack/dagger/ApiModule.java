@@ -1,6 +1,7 @@
 package com.boldijarpaul.polihack.dagger;
 
 import com.boldijarpaul.polihack.BuildConfig;
+import com.boldijarpaul.polihack.service.UserService;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -19,8 +20,7 @@ import retrofit.converter.GsonConverter;
 @Module
 public class ApiModule {
 
-    public static final String IP = "192.168.0.34";
-    private static final String API_APP_DATA_ENDPOINT = "http://" + IP + "/api/index.php/";
+    private static final String API_APP_DATA_ENDPOINT = "http://polihack-boldijar.rhcloud.com/api/v1/";
 
     @Provides
     @Singleton
@@ -54,11 +54,11 @@ public class ApiModule {
                 .build();
     }
 
-//     @Provides
-//    @Singleton
-//    UserService provideUserService(RestAdapter restAdapter) {
-//        return restAdapter.create(UserService.class);
-//    }
+    @Provides
+    @Singleton
+    UserService provideUserService(RestAdapter restAdapter) {
+        return restAdapter.create(UserService.class);
+    }
 
 
 }
