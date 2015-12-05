@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.adapters.QuestAdapter;
@@ -67,6 +68,15 @@ public class QuestsActivity extends AppCompatActivity implements QuestAdapter.Qu
         QuestAdapter questAdapter = new QuestAdapter(quests, this);
         mRecycler.setAdapter(questAdapter);
         questAdapter.setListener(this);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

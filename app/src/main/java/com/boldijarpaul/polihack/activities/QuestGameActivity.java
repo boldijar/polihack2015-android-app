@@ -1,11 +1,13 @@
 package com.boldijarpaul.polihack.activities;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -86,7 +88,22 @@ public class QuestGameActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
-        
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra(QuizActivity.KEY_HASH, text);
+        startActivity(intent);
+        mCodeReaderView.getCameraManager().stopPreview();
+        mCodeReaderView.setVisibility(View.INVISIBLE);
+        mMapHolder.setVisibility(View.VISIBLE);
+        mFab.setImageResource(R.drawable.ic_linked_camera_white_24dp);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

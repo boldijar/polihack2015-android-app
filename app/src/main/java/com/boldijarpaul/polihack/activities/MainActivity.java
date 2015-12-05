@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.boldijarpaul.polihack.R;
@@ -57,6 +58,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
@@ -71,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.main_map_fragment);
         stories = new ArrayList<Story>();
         stories.add(createStory("History quest", 0xff0fab, 45.6667, 24.6167));
-        stories.add(createStory("Narnia hunt", 0xfa0fa5 , 45.637, 25.4167));
+        stories.add(createStory("Narnia hunt", 0xfa0fa5, 45.637, 25.4167));
         stories.add(createStory("Colorado 23", 0x278210, 45.6167, 25.5147));
         stories.add(createStory("Spiderin", 0xab2bac, 45.6637, 25.8161));
         stories.add(createStory("Valoroa hor", 0xbacbac, 45.5617, 25.5967));
