@@ -1,7 +1,10 @@
 package com.boldijarpaul.polihack.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,9 +47,12 @@ public class QuizActivity extends AppCompatActivity {
     View mLayout2;
     @Bind(R.id.quiz_layout_3)
     View mLayout3;
+    @Bind(R.id.quiz_fab)
+    View mFab;
 
 
     private Quiz mQuiz;
+    private int answerIndex = 1;
     private String mCorrectAnswer;
 
     @Override
@@ -99,6 +105,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateCheckBoxes(int answer) {
+        this.answerIndex = answer;
         mIcon1.setImageResource(R.drawable.ic_close_white_24dp);
         mIcon2.setImageResource(R.drawable.ic_close_white_24dp);
         mIcon3.setImageResource(R.drawable.ic_close_white_24dp);
@@ -120,6 +127,35 @@ public class QuizActivity extends AppCompatActivity {
             mIcon1.animate().alpha(.5f).start();
             mIcon2.animate().alpha(.5f).start();
         }
+    }
+
+    private String getOption() {
+        if (answerIndex == 1) return mAnswer1.getText().toString();
+        if (answerIndex == 2) return mAnswer2.getText().toString();
+        if (answerIndex == 3) return mAnswer3.getText().toString();
+        return "";
+    }
+
+    @OnClick(R.id.quiz_fab)
+    void fabClick() {
+        boolean correct = mCorrectAnswer.equals(getOption());
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this);
+        builder.setTitle(correct ? getString(R.string.msg_congrats) : getString(R.string.msg_oops));
+        builder.setMessage(correct ? getString(R.string.msg_good_answer) : getString(R.string.msg_wrong_answer));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                goBackHome();
+            }
+        });//second parameter used for onclicklistener
+        builder.show();
+    }
+
+    private void goBackHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     @Override

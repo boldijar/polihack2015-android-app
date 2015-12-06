@@ -9,4 +9,8 @@
     <string name="msg_get_directions">Get directions</string>
     <string name="msg_leaderboard">Leaderboard</string>
     <string name="msg_quiz">Quiz</string>
+    <string name="msg_congrats">Congratulations!</string>
+    <string name="msg_oops">Oops</string>
+    <string name="msg_wrong_answer">Sorry, wrong answer! Come back in 24 hours!</string>
+    <string name="msg_good_answer">You were right! Quest is finished!</string>
 </resources>

@@ -130,7 +130,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         LatLngBounds bounds = builder.build();
         int padding = 0; // offset from edges of the map in pixels
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
         googleMap.animateCamera(cu);
         googleMap.setOnMarkerClickListener(this);
     }
