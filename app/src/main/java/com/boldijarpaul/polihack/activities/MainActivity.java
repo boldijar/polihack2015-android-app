@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.adapters.StoryAdapter;
+import com.boldijarpaul.polihack.dagger.DaggerApp;
+import com.boldijarpaul.polihack.mvp.model.DatabaseHandler;
 import com.boldijarpaul.polihack.mvp.model.Story;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,6 +28,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ArrayList<Story> stories;
     private ScaleInAnimationAdapter mScaleInAnimationAdapter;
 
+
+    @Inject
+    DatabaseHandler databaseHandler;
 
     private Story createStory(String name, int color, double lat, double lng) {
         Story story = new Story();
@@ -82,26 +89,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        DaggerApp.get(this).graph().inject(this);
+        stories = (ArrayList<Story>) databaseHandler.stories;
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.main_map_fragment);
-        stories = new ArrayList<Story>();
-        stories.add(createStory("History quest", 0xff0fab, 45.6667, 24.6167));
-        stories.add(createStory("Narnia hunt", 0xfa0fa5, 45.637, 25.4167));
-        stories.add(createStory("Colorado 23", 0x278210, 45.6167, 25.5147));
-        stories.add(createStory("Spiderin", 0xab2bac, 45.6637, 25.8161));
-        stories.add(createStory("Valoroa hor", 0xbacbac, 45.5617, 25.5967));
-        stories.add(createStory("Music quest", 0xca127c, 45.8657, 25.6667));
-        stories.add(createStory("History quest", 0xff0fab, 45.6667, 24.6167));
-        stories.add(createStory("Narnia hunt", 0xfa0fa5, 45.637, 25.4167));
-        stories.add(createStory("Colorado 23", 0x278210, 45.6167, 25.5147));
-        stories.add(createStory("Spiderin", 0xab2bac, 45.6637, 25.8161));
-        stories.add(createStory("Valoroa hor", 0xbacbac, 45.5617, 25.5967));
-        stories.add(createStory("Music quest", 0xca127c, 45.8657, 25.6667));
-        stories.add(createStory("History quest", 0xff0fab, 45.6667, 24.6167));
-        stories.add(createStory("Narnia hunt", 0xfa0fa5, 45.637, 25.4167));
-        stories.add(createStory("Colorado 23", 0x278210, 45.6167, 25.5147));
-        stories.add(createStory("Spiderin", 0xab2bac, 45.6637, 25.8161));
-        stories.add(createStory("Valoroa hor", 0xbacbac, 45.5617, 25.5967));
-        stories.add(createStory("Music quest", 0xca127c, 45.8657, 25.6667));
+
 
         StoryAdapter adapter = new StoryAdapter(stories, this);
         adapter.setListener(this);

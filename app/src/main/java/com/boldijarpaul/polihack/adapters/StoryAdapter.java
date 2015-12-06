@@ -2,14 +2,12 @@ package com.boldijarpaul.polihack.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.mvp.model.Story;
@@ -61,7 +59,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             StoryViewHolder storyViewHolder = (StoryViewHolder) holder;
             storyViewHolder.title.setText(story.name);
             GradientDrawable shapeDrawable = (GradientDrawable) storyViewHolder.circle.getBackground();
-            shapeDrawable.setColor(story.getColor());
+            shapeDrawable.setColor(story.color);
             storyViewHolder.secondLine.setText(mContext.getString(R.string.msg_quest_count) + "15");
             storyViewHolder.circle.setImageResource(((int) (Math.random() * 100) % 2) == 0 ? R.drawable.ic_close_white_24dp :
                     R.drawable.ic_check_white_24dp);

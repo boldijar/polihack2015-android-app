@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 
+import com.boldijarpaul.polihack.mvp.model.DatabaseHandler;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.Cache;
@@ -25,6 +26,12 @@ import timber.log.Timber;
 public class DataModule {
 
     private static final int DISK_CACHE_SIZE = 50 * 1024 * 1024; // 50MB
+
+    @Provides
+    @Singleton
+    DatabaseHandler provideDbHandler() {
+        return new DatabaseHandler();
+    }
 
     @Provides
     @Singleton

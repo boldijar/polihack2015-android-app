@@ -1,6 +1,7 @@
 package com.boldijarpaul.polihack.mvp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,10 +13,21 @@ public class Story extends BaseObject implements Serializable {
     public double lat, lng;
     public int rating;
 
-    public List<Quest> quests;
+    public List<Quest> quests = new ArrayList<>();
 
     public int getColor() {
         return randomColor();
+    }
+
+    public Story() {
+    }
+
+    public Story(String name, int color, double lat, double lng, int rating) {
+        this.name = name;
+        this.color = color;
+        this.lat = lat;
+        this.lng = lng;
+        this.rating = rating;
     }
 
     private static Random sRandom;

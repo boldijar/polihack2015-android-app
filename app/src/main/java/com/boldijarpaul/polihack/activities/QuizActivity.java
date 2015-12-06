@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.mvp.model.Quiz;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import butterknife.Bind;
@@ -24,6 +23,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class QuizActivity extends AppCompatActivity {
 
+    public static final String KEY_QUIZ = "QUIZZ";
     public static String KEY_HASH = "KEYH";
     private String mHash;
 
@@ -68,9 +68,7 @@ public class QuizActivity extends AppCompatActivity {
         updateCheckBoxes(1);
 
         mHash = getIntent().getStringExtra(KEY_HASH);
-        mQuiz = new Quiz();
-        mQuiz.question = "Who was the first person in space?";
-        mQuiz.answers = Arrays.asList("Neil Armstrong", "Van Disel", "Kurt Cobain");
+        mQuiz = (Quiz) getIntent().getSerializableExtra(KEY_QUIZ);
         mCorrectAnswer = mQuiz.answers.get(0);
         Collections.shuffle(mQuiz.answers);
         loadQuizViews();

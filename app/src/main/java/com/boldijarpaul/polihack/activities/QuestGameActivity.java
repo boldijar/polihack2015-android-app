@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class QuestGameActivity extends AppCompatActivity implements OnMapReadyCallback, QRCodeReaderView.OnQRCodeReadListener {
 
@@ -88,8 +89,14 @@ public class QuestGameActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
+        Timber.w("Actual[" + text + "], required[" + mQuest.quiz.hash + "]");
+
+        if (mQuest.quiz.hash.equals(text) == false)
+            return;
+
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra(QuizActivity.KEY_HASH, text);
+        intent.putExtra(QuizActivity.KEY_QUIZ, mQuest.quiz);
         startActivity(intent);
         mCodeReaderView.getCameraManager().stopPreview();
         mCodeReaderView.setVisibility(View.INVISIBLE);
