@@ -1,7 +1,5 @@
 package com.boldijarpaul.polihack.mvp.model;
 
-import android.graphics.Color;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
@@ -11,8 +9,8 @@ public class Story extends BaseObject implements Serializable {
     private int userId;
     public String name;
     public int color;
-
     public double lat, lng;
+    public int rating;
 
     public List<Quest> quests;
 
