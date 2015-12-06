@@ -20,8 +20,7 @@
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_check_white_24dp" />
+            android:padding="5dp" />
 
         <View
             android:layout_width="1dp"
@@ -53,8 +52,18 @@
                 fontPath="fonts/Lato-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha=".8"
                 android:textSize="16dp"
                 tools:text="Total users: 12" />
+
+            <TextView
+                android:id="@+id/item_user_3rd_line"
+                fontPath="fonts/Lato-Regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha=".7"
+                android:textSize="14dp"
+                tools:text="County: Cluj Napoca" />
 
         </LinearLayout>
     </FrameLayout>

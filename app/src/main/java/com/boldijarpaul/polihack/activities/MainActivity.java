@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
+        if (item.getItemId() == R.id.menu_main_people) {
+            startActivity(new Intent(this, LeaderboardActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -73,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         List<Marker> markers = new ArrayList<>();
@@ -120,17 +123,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .title(story.name)));
         }
 
-        LatLngBounds.Builder b = new LatLngBounds.Builder();
-        for (Marker m : markers) {
-            b.include(m.getPosition());
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (Marker marker : markers) {
+            builder.include(marker.getPosition());
         }
-        LatLngBounds bounds = b.build();
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 10, 10, 1);
+        LatLngBounds bounds = builder.build();
+        int padding = 30; // offset from edges of the map in pixels
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         googleMap.animateCamera(cu);
     }
 
     @Override
     public void onHeaderClick() {
+        mRecycler.animate().alpha(0f).start();
         mRecycler.setVisibility(View.INVISIBLE);
         mFab.setVisibility(View.VISIBLE);
 

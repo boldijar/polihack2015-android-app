@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.boldijarpaul.polihack.R;
 import com.boldijarpaul.polihack.mvp.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
 
     private List<User> mUsers;
     private Context mContext;
@@ -33,21 +34,22 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(itemView);
     }
 
+    private String getProfileUrl(String id) {
+        return "http://graph.facebook.com/" + id + "/picture?type=square&width=100&height=100";
+    }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(UserViewHolder holder, int position) {
         final User user = mUsers.get(position);
-        UserViewHolder userViewHolder = (UserViewHolder) holder;
-        userViewHolder.title.setText(user.name);
-        userViewHolder.secondLine.setText("Points: " + user.score);
-        userViewHolder.circle.setImageResource(((int) (Math.random() * 100) % 2) == 0 ? R.drawable.ic_close_white_24dp :
-                R.drawable.ic_check_white_24dp);
-
+        holder.title.setText(user.name);
+        Picasso.with(mContext).load(getProfileUrl(user.facebookId)).into(holder.circle);
+        holder.secondLine.setText("Points: " + user.score);
+        holder.thirdLine.setText("County: Cluj Napoca");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +80,8 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView secondLine;
         @Bind(R.id.item_user_title)
         TextView title;
+        @Bind(R.id.item_user_3rd_line)
+        TextView thirdLine;
 
 
         public UserViewHolder(View itemView) {

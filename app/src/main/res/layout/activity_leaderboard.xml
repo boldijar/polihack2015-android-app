@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.boldijarpaul.polihack.activities.QuestsActivity">
+    tools:context="com.boldijarpaul.polihack.activities.LeaderboardActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/quests_recylcer"
+        android:id="@+id/leaderboard_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
