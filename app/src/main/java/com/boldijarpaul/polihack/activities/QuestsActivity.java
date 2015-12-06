@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.boldijarpaul.polihack.R;
@@ -25,6 +26,8 @@ public class QuestsActivity extends AppCompatActivity implements QuestAdapter.Qu
     public static final String KEY_STORY = "keystory";
     @Bind(R.id.quests_recylcer)
     RecyclerView mRecycler;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
     private Story mStory;
 
     @Override
@@ -32,6 +35,7 @@ public class QuestsActivity extends AppCompatActivity implements QuestAdapter.Qu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quests);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
         mStory = (Story) getIntent().getSerializableExtra(KEY_STORY);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(mStory.name);

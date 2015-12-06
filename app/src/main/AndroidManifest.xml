@@ -27,7 +27,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_key" />
 
-        <activity android:name=".activities.QuestsActivity" />
+        <activity
+            android:name=".activities.QuestsActivity"
+            android:theme="@style/AppThemeNoActionbar" />
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -38,10 +40,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.QuestGameActivity" />
-        <activity android:name=".activities.QuizActivity" />
+        <activity
+            android:name=".activities.QuizActivity"
+            android:label="@string/msg_quiz" />
         <activity
             android:name=".activities.LeaderboardActivity"
-            android:label="@string/msg_leaderboard"></activity>
+            android:label="@string/msg_leaderboard"
+            android:theme="@style/AppThemeNoActionbar"></activity>
     </application>
 
 </manifest>

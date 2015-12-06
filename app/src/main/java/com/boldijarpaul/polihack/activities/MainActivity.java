@@ -33,7 +33,7 @@ import butterknife.OnClick;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, StoryAdapter.StoryAdapterListener {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, StoryAdapter.StoryAdapterListener, GoogleMap.OnMarkerClickListener {
 
     @Bind(R.id.main_recycler)
     RecyclerView mRecycler;
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,9 +129,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             builder.include(marker.getPosition());
         }
         LatLngBounds bounds = builder.build();
-        int padding = 30; // offset from edges of the map in pixels
+        int padding = 0; // offset from edges of the map in pixels
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         googleMap.animateCamera(cu);
+        googleMap.setOnMarkerClickListener(this);
     }
 
     @Override
@@ -152,5 +154,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     void fabClick() {
         mRecycler.setVisibility(View.VISIBLE);
         mFab.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        for (Story story : stories) {
+            if (story.name.equals(marker.getTitle())) {
+                onItemClick(story);
+                return false;
+            }
+        }
+        return false;
     }
 }

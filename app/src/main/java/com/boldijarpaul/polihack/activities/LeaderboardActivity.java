@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.boldijarpaul.polihack.R;
-import com.boldijarpaul.polihack.adapters.StoryAdapter;
 import com.boldijarpaul.polihack.adapters.UsersAdapter;
 import com.boldijarpaul.polihack.mvp.model.User;
 
@@ -24,12 +24,15 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     @Bind(R.id.leaderboard_recycler)
     RecyclerView mRecycler;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setupRecycler();
@@ -66,7 +69,6 @@ public class LeaderboardActivity extends AppCompatActivity {
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         ScaleInAnimationAdapter mScaleInAnimationAdapter = new ScaleInAnimationAdapter(adapter);
         mRecycler.setAdapter(mScaleInAnimationAdapter);
-
 
 
     }

@@ -8,4 +8,5 @@
     <string name="msg_leaderboards">Leaderboards</string>
     <string name="msg_get_directions">Get directions</string>
     <string name="msg_leaderboard">Leaderboard</string>
+    <string name="msg_quiz">Quiz</string>
 </resources>
